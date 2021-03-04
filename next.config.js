@@ -15,11 +15,11 @@ module.exports = (phase, {defaultConfig}) => {
     
     return {
         /* config options for all phases except development here */
-        // env: {
-        //     EXP: '.env.local에 등록한 NEXT_PUBLIC_ 와 같음. 클라이언트에서 접근가능'
-        // },
+        env: {
+            NEXT_PUBLIC_EXP: "next.config.js Web client !!!"
+        },
         // trailingSlash: true,
-        basePath: '/club',
+        basePath: '/club', // "/iamges/a.png" 문자열로 된 경로는 적용안된다
         // assetPrefix: '/club',
         // publicRuntimeConfig: {
         //     basePath: "/club",
