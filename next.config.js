@@ -10,15 +10,16 @@ module.exports = (phase, {defaultConfig}) => {
             /* development only config options here */
         }
     }
+
+    console.log(process.env)
     
     return {
         /* config options for all phases except development here */
         // env: {
-        //     customKey: 'my-value',
-        //     PUBLIC_URL: '/club'
+        //     EXP: '.env.local에 등록한 NEXT_PUBLIC_ 와 같음. 클라이언트에서 접근가능'
         // },
         // trailingSlash: true,
-        // basePath: '/club',
+        basePath: '/club',
         // assetPrefix: '/club',
         // publicRuntimeConfig: {
         //     basePath: "/club",

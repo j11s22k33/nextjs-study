@@ -16,7 +16,8 @@
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "redux": "4.0.5"
+    "redux": "4.0.5",
+    "tsconfig-paths": "3.9.0"
   },
   "devDependencies": {
     "node-sass": "5.0.0",

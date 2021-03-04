@@ -1,9 +1,14 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+// import styles from '@/styles/Home.module.css'
 
 export default function Home() {
+  console.log(process.env)
+  console.log(process.env.NEXT_PUBLIC_EXP)
+
   return (
     <div className={styles.container}>
+      <img src="/assets/images/aaa.jpg" />
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
