@@ -10,6 +10,17 @@
   box-sizing: border-box;
 }
 
+// next.config.js 에 설정되어 있다
+// $basePath: '~src/assets/images';
+// $basePath: '/alaska_dev/apps/Club';
+.test-bg {
+  background-image: url(#{$basePath}/images/club/bg-gradient.png);
+  background-image: url(#{$basePath}/images/club/bg-gradient.png);
+  background-image: url(#{$basePath}/images/club/bg-gradient.png);
+  background-image: url(#{$basePath}/images/club/bg-gradient.png);
+  background-image: url(#{$basePath}/images/club/bg-gradient.png);
+}
+
 body {
   position: absolute;
   top: 0;
