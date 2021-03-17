@@ -5,11 +5,12 @@ module.exports = (phase, { defaultConfig }) => {
   console.log(`[next.config.js]`, phase);
   console.log(defaultConfig);
 
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return {
-      /* development only config options here */
-    };
-  }
+  // .env 파일을 dev, prod 분리해서 쓰게 때문에 필요없을듯
+  // if (phase === PHASE_DEVELOPMENT_SERVER) {
+  //   return {
+  //     /* development only config options here */
+  //   };
+  // }
 
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
 
@@ -29,7 +30,7 @@ module.exports = (phase, { defaultConfig }) => {
       // includePaths: ['./src'],
       // prependData: `@import "~@styles/variable.scss";`,
       // prependData: `$basePath: ~src/assets/images;`,
-      prependData: `$basePath: ${basePath};`
+      prependData: `$basePath: '${basePath}';`
     },
     typescript: {
       // !! WARN !!
