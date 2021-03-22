@@ -1,43 +1,117 @@
 const isProd = process.env.NODE_ENV === "production";
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+const {
+  PHASE_DEVELOPMENT_SERVER,
+  PHASE_PRODUCTION_BUILD,
+  PHASE_EXPORT
+} = require("next/constants");
 
+/*
+https://nextjs.org/docs/api-reference/next.config.js/introduction
+https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
+*/
 module.exports = (phase, { defaultConfig }) => {
-  console.log(`[next.config.js]`, phase);
-  console.log(defaultConfig);
+  console.log(phase, defaultConfig);
 
-  // .env 파일을 dev, prod 분리해서 쓰게 때문에 필요없을듯
   // if (phase === PHASE_DEVELOPMENT_SERVER) {
-  //   return {
-  //     /* development only config options here */
-  //   };
+  //     return {
+  //         /* development only config options here */
+  //     }
   // }
 
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
-
-  return {
-    /* config options for all phases except development here */
-    // env: {
-    //     customKey: 'my-value',
-    //     PUBLIC_URL: basePath
+  const productionOptions = {
+    // onDemandEntries: {
+    //     maxInactiveAge: 25 * 1000,
+    //     pagesBufferLength: 2,
     // },
-    // trailingSlash: true,
-    basePath: basePath,
-    assetPrefix: basePath,
+    // generateBuildId: async () => {
+    //     return 'my-build-id'
+    // },
+    // env: {
+    //     customKey: 'my-value'
+    // },
+    // serverRuntimeConfig: {
+    //     mySecret: 'secret',
+    //     secondSecret: process.env.SECOND_SECRET,
+    // },
     // publicRuntimeConfig: {
-    //     basePath: basePath,
-    // }
+    //     staticFolder: '/static',
+    // },
+    // async rewrites() {
+    //     return [
+    //       {
+    //         source: '/about',
+    //         destination: '/',
+    //       },
+    //     ]
+    // },
+    // async redirects() {
+    //     return [
+    //       {
+    //         source: '/about',
+    //         destination: '/',
+    //         permanent: true,
+    //       },
+    //     ]
+    // },
+    // async headers() {
+    //     return [
+    //       {
+    //         source: '/about',
+    //         headers: [
+    //           {
+    //             key: 'x-custom-header',
+    //             value: 'my custom header value',
+    //           },
+    //           {
+    //             key: 'x-another-custom-header',
+    //             value: 'my other custom header value',
+    //           },
+    //         ],
+    //       },
+    //     ]
+    // },
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+      // Note: we provide webpack above so you should not `require` it
+      // Perform customizations to webpack config
+      config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
+
+      // Important: return the modified config
+      return config;
+    },
+    // trailingSlash: true, // 경로 끝에 "/"
+    // reactStrictMode: true,
+    // generateEtags: false, // html etag 캐시관련
+    // poweredByHeader: false,
+    // compress: true, // 리소스 gzip
+    basePath: basePath,
+    // assetPrefix: basePath, //CDN
+    // pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
+    // productionBrowserSourceMaps: false, // 소스맵
+    // distDir: 'build', // 배포 폴더
     sassOptions: {
-      // includePaths: ['./src'],
-      // prependData: `@import "~@styles/variable.scss";`,
-      // prependData: `$basePath: ~src/assets/images;`,
-      prependData: `$basePath: '${basePath}';`
+      prependData: `$basePath: '${basePath}';` // sass $basePath 변수 선언
     },
     typescript: {
-      // !! WARN !!
-      // Dangerously allow production builds to successfully complete even if
-      // your project has type errors.
-      // !! WARN !!
-      ignoreBuildErrors: true
+      ignoreBuildErrors: true // ts 빌드 에러 무시
+    },
+    exportPathMap: async function (
+      defaultPathMap,
+      { dev, dir, outDir, distDir, buildId }
+    ) {
+      // 라우트경로 : {페이지경로, 페이지파라미터}  -> html 생성
+      return {
+        "/": { page: "/" }
+        // '/home': { page: '/home', query: {} },
+        // '/contents': { page: '/contents', query: {} },
+        // '/notices': { page: '/notices', query: {} },
+        // '/clubs': { page: '/clubs', query: {} },
+      };
     }
   };
+
+  const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true"
+  });
+  return withBundleAnalyzer(productionOptions);
 };

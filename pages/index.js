@@ -1,35 +1,34 @@
-import { useRouter, withRouter } from "next/router";
 import React, { useEffect } from "react";
-// import { withRouter } from "react-router-dom";
 
-const Index = ({ updateUI, location, match, history }) => {
-  const router = useRouter();
+const pageName = "[index.js]";
 
-  console.log("process.env => ", process.env);
-  console.log("process.env.EXP => ", process.env.EXP);
-  console.log("process.env.NEXT_PUBLIC_EXP => ", process.env.NEXT_PUBLIC_EXP);
+const Index = ({ updateUI }) => {
+  console.log(
+    "process.env.NEXT_PUBLIC_BASE_PATH => ",
+    process.env.NEXT_PUBLIC_BASE_PATH
+  );
 
-  // const history = useHistory();
   useEffect(() => {
-    // console.log(history);
-    // history.push("/test", {});
-    // console.log(history);
-    console.log(location, match, history);
+    console.log(`${pageName} component mount`);
+    return () => {
+      console.log(`${pageName} component unmount`);
+    };
   }, []);
 
   return (
     <div>
-      <a
-        onClick={() => {
-          router.push("/test");
-        }}
-      >
-        test
-      </a>
-      <br />
-      <img src="/assets/images/aaa.jpg" alt="aaa.jpg" />
+      <style jsx>{`
+        .my-img {
+          width: 100px;
+        }
+      `}</style>
+      <img
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/aaa.jpg`}
+        alt="aaa.jpg"
+        className="my-img"
+      />
     </div>
   );
 };
 
-export default withRouter(Index);
+export default Index;

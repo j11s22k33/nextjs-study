@@ -3,7 +3,12 @@ import { useStateCallbackWrapper } from "../utils/common.tsx";
 
 function MyApp({ Component, pageProps }) {
   const [, uTmp] = useStateCallbackWrapper(0);
-  function updateUI({ useLayoutEffect, useEffect }) {
+  function updateUI(
+    { useLayoutEffect, useEffect } = {
+      useLayoutEffect: undefined,
+      useEffect: undefined
+    }
+  ) {
     uTmp({
       setState: (c) => c + 1,
       useLayoutEffect,
