@@ -1,5 +1,3 @@
-const isProd = process.env.NODE_ENV === "production";
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
 const {
   PHASE_EXPORT,
   PHASE_PRODUCTION_BUILD,
@@ -15,11 +13,9 @@ module.exports = (phase, { defaultConfig }) => {
   console.log(phase);
   console.log(defaultConfig);
 
-  // if (phase === PHASE_DEVELOPMENT_SERVER) {
-  //     return {
-  //         /* development only config options here */
-  //     }
-  // }
+  const isProd = process.env.NODE_ENV === "production";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+  const distDir = phase === PHASE_DEVELOPMENT_SERVER ? ".next" : "build";
 
   const productionOptions = {
     // onDemandEntries: {
@@ -70,10 +66,10 @@ module.exports = (phase, { defaultConfig }) => {
     //       },
     //     ]
     // },
-    distDir: phase === PHASE_DEVELOPMENT_SERVER ? ".next" : "build", // [next dev => /.next] [next build, export, server => /build]
-    generateBuildId: async () => {
-      return "my-build-id"; // 항상 같은 아이디 반환하여. 무작위 빌드폴더가 쌓이지 않도록 하자
-    },
+    distDir: distDir, // [next dev =a> /.next] [next build, export, server => /build]
+    // generateBuildId: async () => {
+    //   return "my-build-id";
+    // },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
       // Note: we provide webpack above so you should not `require` it
       // Perform customizations to webpack config
