@@ -1,9 +1,10 @@
 const isProd = process.env.NODE_ENV === "production";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
 const {
-  PHASE_DEVELOPMENT_SERVER,
+  PHASE_EXPORT,
   PHASE_PRODUCTION_BUILD,
-  PHASE_EXPORT
+  PHASE_PRODUCTION_SERVER,
+  PHASE_DEVELOPMENT_SERVER
 } = require("next/constants");
 
 /*
@@ -11,7 +12,8 @@ https://nextjs.org/docs/api-reference/next.config.js/introduction
 https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
 */
 module.exports = (phase, { defaultConfig }) => {
-  console.log(phase, defaultConfig);
+  console.log(phase);
+  console.log(defaultConfig);
 
   // if (phase === PHASE_DEVELOPMENT_SERVER) {
   //     return {
@@ -23,9 +25,6 @@ module.exports = (phase, { defaultConfig }) => {
     // onDemandEntries: {
     //     maxInactiveAge: 25 * 1000,
     //     pagesBufferLength: 2,
-    // },
-    // generateBuildId: async () => {
-    //     return 'my-build-id'
     // },
     // env: {
     //     customKey: 'my-value'
@@ -71,6 +70,10 @@ module.exports = (phase, { defaultConfig }) => {
     //       },
     //     ]
     // },
+    distDir: phase === PHASE_DEVELOPMENT_SERVER ? ".next" : "build", // [next dev => /.next] [next build, export, server => /build]
+    generateBuildId: async () => {
+      return "my-build-id"; // 항상 같은 아이디 반환하여. 무작위 빌드폴더가 쌓이지 않도록 하자
+    },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
       // Note: we provide webpack above so you should not `require` it
       // Perform customizations to webpack config
@@ -88,7 +91,6 @@ module.exports = (phase, { defaultConfig }) => {
     // assetPrefix: basePath, //CDN
     // pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
     // productionBrowserSourceMaps: false, // 소스맵
-    // distDir: 'build', // 배포 폴더
     sassOptions: {
       prependData: `$basePath: '${basePath}';` // sass $basePath 변수 선언
     },
