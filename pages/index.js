@@ -3,11 +3,6 @@ import React, { useEffect } from "react";
 const pageName = "[index.js]";
 
 const Index = ({ updateUI }) => {
-  console.log(
-    "process.env.NEXT_PUBLIC_BASE_PATH => ",
-    process.env.NEXT_PUBLIC_BASE_PATH
-  );
-
   useEffect(() => {
     console.log(`${pageName} component mount`);
     return () => {
