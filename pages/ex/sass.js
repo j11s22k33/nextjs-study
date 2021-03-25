@@ -1,12 +1,17 @@
+import Head from "next/head";
 import React, { useEffect } from "react";
 import componentLevelStyle from "@/styles/componentLevel.module.scss";
 
-const Sass = ({ updateUI }) => {
+export default function Sass({ updateUI }) {
   useEffect(() => {
     //
   }, []);
   return (
     <>
+      <Head>
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {/*
        - index.scss .error
        - componentLevel.module.scss .error
@@ -36,6 +41,4 @@ const Sass = ({ updateUI }) => {
       `}</style>
     </>
   );
-};
-
-export default Sass;
+}
