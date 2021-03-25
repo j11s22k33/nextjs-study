@@ -1,0 +1,12 @@
+$color: green;
+
+.error {
+  color: $color;
+  background-color: red;
+}
+
+.error-big {
+  color: $color;
+  background-color: red;
+  font-size: 50px;
+}

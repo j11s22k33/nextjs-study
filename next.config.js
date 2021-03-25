@@ -5,6 +5,8 @@ const {
   PHASE_DEVELOPMENT_SERVER
 } = require("next/constants");
 
+const path = require("path");
+
 /*
 https://nextjs.org/docs/api-reference/next.config.js/introduction
 https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
@@ -88,6 +90,7 @@ module.exports = (phase, { defaultConfig }) => {
     // pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
     // productionBrowserSourceMaps: false, // 소스맵
     sassOptions: {
+      // includePaths: [path.join(__dirname, "styles")],
       prependData: `$basePath: '${basePath}';` // sass $basePath 변수 선언
     },
     typescript: {

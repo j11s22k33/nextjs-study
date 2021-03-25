@@ -1,6 +1,5 @@
 @import 'common.scss';
 
-
 // @import url('../fonts/Roboto.css');
 // @import url('../assets/fonts/YOONGOTHIC.css');
 
@@ -8,6 +7,11 @@
 
 *, ::before, ::after {
   box-sizing: border-box;
+}
+
+.error {
+  color: blue;
+  background-color: green;
 }
 
 // next.config.js 에 설정되어 있다

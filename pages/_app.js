@@ -1,5 +1,5 @@
 import "@/styles/index.scss";
-import { useStateCallbackWrapper } from "@/utils/common.tsx";
+import { useStateCallbackWrapper } from "@/utils/common";
 
 function MyApp({ Component, pageProps }) {
   const [, uTmp] = useStateCallbackWrapper(0);
