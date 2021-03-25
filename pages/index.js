@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
-import bbb from "@/styles/test.module.scss";
+
 const pageName = "[index.js]";
 
-const Index = ({ updateUI }) => {
-  useEffect(() => {
-    console.log(`${pageName} component mount`);
-    return () => {
-      console.log(`${pageName} component unmount`);
-    };
-  }, []);
+export default function Index({ updateUI }) {
+  useEffect(() => {}, []);
 
   return (
-    <div className={bbb.error}>
+    <>
       하이
       <style jsx>{`
         .my-img {
@@ -23,8 +18,6 @@ const Index = ({ updateUI }) => {
         alt="aaa.jpg"
         className="my-img"
       />
-    </div>
+    </>
   );
-};
-
-export default Index;
+}

@@ -18,7 +18,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <h1>_app.js</h1>
       <Component {...pageProps} updateUI={updateUI} />
     </>
   );
