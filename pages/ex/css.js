@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
-import componentLevelStyle from "@/styles/componentLevel.module.scss";
+import cssStyle from "@/styles/ex/css.module.scss";
 
 const pageName = "[MyCss]";
 
@@ -29,7 +29,7 @@ export default function MyCss({ updateUI }) {
        하지만 Element.style 에 직접 ... 
        */}
       <div className="error">가나다라마바사</div>
-      <div className={componentLevelStyle["error-big"]}>0123456789</div>
+      <div className={cssStyle["error-big"]}>0123456789</div>
       <div className="error2">abcdefghi</div>
       <div className="error3">ABCDEFG</div>
 
