@@ -68,6 +68,11 @@ module.exports = (phase, { defaultConfig }) => {
     //       },
     //     ]
     // },
+    // images: {
+    //   loader: "imgix",
+    //   path: "/"
+    //   // path: "https://example.com/myaccount/"
+    // },
     distDir: distDir, // [next dev =a> /.next] [next build, export, server => /build]
     // generateBuildId: async () => {
     //   return "my-build-id";
