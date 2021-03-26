@@ -6,7 +6,7 @@ export default function Index({ updateUI }) {
   useEffect(() => {}, []);
 
   return (
-    <>
+    <div>
       하이
       <style jsx>{`
         .my-img {
@@ -18,6 +18,6 @@ export default function Index({ updateUI }) {
         alt="aaa.jpg"
         className="my-img"
       />
-    </>
+    </div>
   );
 }

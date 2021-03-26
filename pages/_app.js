@@ -1,5 +1,8 @@
 import "@/styles/index.scss";
 import { useStateCallbackWrapper } from "@/utils/common";
+import env from "@/config/env";
+
+console.log(`[_app]`, env);
 
 function MyApp({ Component, pageProps }) {
   const [, uTmp] = useStateCallbackWrapper(0);
