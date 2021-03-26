@@ -332,15 +332,15 @@ const DelayJob = function () {
   };
 };
 
-JSON.get = function (url, header = {}) {
-  let xhr = new XMLHttpRequest();
+export function xxx(url, header = {}) {
+  const xhr = new XMLHttpRequest();
   xhr.open("GET", url, false);
   for (let [key, value] of Object.entries(header)) {
     xhr.setRequestHeader(key, value);
   }
   xhr.send();
-  return JSON.parse(xhr.response);
-};
+  xhr.response;
+}
 
 window.performance = window.performance || {};
 performance.now = (function () {
