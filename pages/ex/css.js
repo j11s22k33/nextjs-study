@@ -2,10 +2,17 @@ import Head from "next/head";
 import React, { useEffect } from "react";
 import componentLevelStyle from "@/styles/componentLevel.module.scss";
 
-export default function Sass({ updateUI }) {
+const pageName = "[MyCss]";
+
+export default function MyCss({ updateUI }) {
   useEffect(() => {
-    //
+    console.log(pageName, "component mount");
+
+    return () => {
+      console.log(pageName, "component un-mount");
+    };
   }, []);
+
   return (
     <>
       <Head>

@@ -1,23 +1,20 @@
 import React, { useEffect } from "react";
 
-const pageName = "[index.js]";
+const pageName = "[MyIndex]";
 
-export default function Index({ updateUI }) {
-  useEffect(() => {}, []);
+export default function MyIndex({ updateUI }) {
+  useEffect(() => {
+    console.log(pageName, "component mount");
+
+    return () => {
+      console.log(pageName, "component un-mount");
+    };
+  }, []);
 
   return (
-    <div>
-      하이
-      <style jsx>{`
-        .my-img {
-          width: 100px;
-        }
-      `}</style>
-      <img
-        src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/aaa.jpg`}
-        alt="aaa.jpg"
-        className="my-img"
-      />
-    </div>
+    <>
+      <div>Index</div>
+      <style jsx>{``}</style>
+    </>
   );
 }

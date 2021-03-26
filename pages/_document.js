@@ -10,11 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            rel="preload"
-            as="image"
-            href="https://t1.daumcdn.net/cfile/blog/2330C24B5448EE5011"
-          />
+          {/* <link rel="preload" as="image" href="https://t1.daumcdn.net/cfile/blog/2330C24B5448EE5011" /> */}
         </Head>
         <body>
           <Main></Main>

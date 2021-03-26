@@ -1,33 +1,20 @@
 import { useEffect } from "react";
 
-const pageName = "[Axios]";
+const pageName = "[MyAxios]";
 
-function log() {
-  console.log.call(this, ...arguments);
-}
-
-export default function Axios() {
+export default function MyAxios() {
   useEffect(() => {
-    console.log(pageName + "mount component");
-
-    log(pageName + "mount component", "hi");
+    console.log(pageName, "component mount");
 
     return () => {
-      console.log(pageName + "un-mount component");
+      console.log(pageName, "component un-mount");
     };
   }, []);
 
   return (
     <>
-      <div id="root">
-        <p className="my-style">Hellow</p>
-      </div>
-      <style jsx>{`
-        .my-style {
-          color: red;
-          background-color: yellow;
-        }
-      `}</style>
+      <div></div>
+      <style jsx>{``}</style>
     </>
   );
 }
