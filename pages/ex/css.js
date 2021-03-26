@@ -22,19 +22,19 @@ export default function Sass({ updateUI }) {
        하지만 Element.style 에 직접 ... 
        */}
       <div className="error">가나다라마바사</div>
-      <div className={componentLevelStyle["error"]}>0123456789</div>
-      <div className="error">abcdefghi</div>
-      <div className="error">ABCDEFG</div>
+      <div className={componentLevelStyle["error-big"]}>0123456789</div>
+      <div className="error2">abcdefghi</div>
+      <div className="error3">ABCDEFG</div>
 
       <style jsx>{`
-        .error {
+        .error2 {
           color: red;
           background-color: yellow;
         }
       `}</style>
 
       <style global jsx>{`
-        .error {
+        .error3 {
           color: white;
           background-color: black;
         }
