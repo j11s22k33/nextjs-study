@@ -24,9 +24,6 @@ export default function MyCss({ updateUI }) {
        - componentLevel.module.scss .error
        - <style jsx> .error
        - <style global jsx> .error
-
-       컴포넌트 레벨 모듈 CSS 승리
-       하지만 Element.style 에 직접 ... 
        */}
       <div className="error">가나다라마바사</div>
       <div className={cssStyle["error-big"]}>0123456789</div>
@@ -44,6 +41,10 @@ export default function MyCss({ updateUI }) {
         .error3 {
           color: white;
           background-color: black;
+
+          &:hover {
+            background-color: red;
+          }
         }
       `}</style>
     </>
