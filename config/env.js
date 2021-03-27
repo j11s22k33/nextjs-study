@@ -1,5 +1,6 @@
 export default {
   isProd: process.env.NODE_ENV === "production",
   basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  isBrowser: process.browser
+  isBrowser: process.browser,
+  apiAdmin: "/api"
 };
