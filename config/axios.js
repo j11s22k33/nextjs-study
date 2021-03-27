@@ -3,7 +3,7 @@ import { cacheAdapterEnhancer, retryAdapterEnhancer } from "axios-extensions";
 import MockAdapter from "axios-mock-adapter";
 import env from "@/config/env";
 
-const axiosName = "[axios]";
+const $name = "[axios]";
 
 const adapterExtensions = retryAdapterEnhancer(axios.defaults.adapter, {
   times: 3
@@ -28,22 +28,22 @@ API.interceptors.request.use(
       ...config.params
       // subscribeId: "66216970"
     };
-    console.log(axiosName, config);
+    console.log($name, config);
     return config;
   },
   (error) => {
-    // console.log(axiosName, error.message, error.config);
+    // console.log($name, error.message, error.config);
     return Promise.reject(error);
   }
 );
 
 API.interceptors.response.use(
   (response) => {
-    console.log(axiosName, "<response>", response.config, response.data);
+    console.log($name, "<response>", response.config, response.data);
     return response;
   },
   (error) => {
-    // console.log(axiosName, "<response>", error);
+    // console.log($name, "<response>", error);
     if (error.config) {
       //
     } else if (error.config && error.response) {

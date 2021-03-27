@@ -14,8 +14,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
  * // 예제 2 - 기존처럼 사용하기
  * const [cnt, callbackWrapperSetState] = useStateCallbackWrapper(0)
  *
- * useEffect(newState => {
- *    console.log(newState)
+ * useEffect(() => {
+ *    console.log(cnt)
  * }, [cnt])
  *
  * callbackWrapperSetState({
