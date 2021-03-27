@@ -1,15 +1,20 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
 import cssStyle from "@/styles/ex/css.module.scss";
+import Router from "next/router";
 
-const pageName = "[MyCss]";
+const $name = "[MyCss]";
 
 export default function MyCss({ updateUI }) {
   useEffect(() => {
-    console.log(pageName, "component mount");
+    console.log($name, "component mount");
+
+    setTimeout(() => {
+      Router.push("/");
+    }, 5000);
 
     return () => {
-      console.log(pageName, "component un-mount");
+      console.log($name, "component un-mount");
     };
   }, []);
 

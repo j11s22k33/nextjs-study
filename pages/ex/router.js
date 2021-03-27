@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import Router from "next/router";
 import Link from "next/link";
 
-const pageName = "[MyRouter]";
+const $name = "[MyRouter]";
 
 export default function MyRouter({ updateUI }) {
   function shallow(event) {
     console.log(
-      pageName,
+      $name,
       "shallow",
       "called",
       "process.browser=" + process.browser
@@ -19,10 +19,10 @@ export default function MyRouter({ updateUI }) {
   }
 
   useEffect(() => {
-    console.log(pageName, "component mount");
+    console.log($name, "component mount");
 
     return () => {
-      console.log(pageName, "component un-mount");
+      console.log($name, "component un-mount");
     };
   }, []);
 

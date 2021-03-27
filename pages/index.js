@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
+import Head from "next/head";
 
-const pageName = "[MyIndex]";
+const $name = "[MyIndex]";
 
 export default function MyIndex({ updateUI }) {
   useEffect(() => {
-    console.log(pageName, "component mount");
+    console.log($name, "component mount");
 
     return () => {
-      console.log(pageName, "component un-mount");
+      console.log($name, "component un-mount");
     };
   }, []);
 
   return (
     <>
-      <div>Index</div>
-      <style jsx>{``}</style>
+      <Head>
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <h1 className="red">Index</h1>
+      <style jsx>{`
+        $color-red: red;
+        .red {
+          color: $color-red;
+        }
+      `}</style>
     </>
   );
 }

@@ -4,12 +4,12 @@ import { cacheAdapterEnhancer, retryAdapterEnhancer } from "axios-extensions";
 import MockAdapter from "axios-mock-adapter";
 import env from "@/config/env";
 
-const pageName = "[MyAxios]";
-const axiosName = "[axios]";
+const $name = "[MyAxios]";
+const $axiosName = "[axios]";
 
 export default function MyAxios() {
   useEffect(() => {
-    console.log(pageName, "component mount");
+    console.log($name, "component mount");
 
     const adapterExtensions = retryAdapterEnhancer(axios.defaults.adapter, {
       times: 3
@@ -34,22 +34,22 @@ export default function MyAxios() {
           ...config.params
           // subscribeId: "66216970"
         };
-        console.log(axiosName, config);
+        console.log($axiosName, config);
         return config;
       },
       (error) => {
-        // console.log(axiosName, error.message, error.config);
+        // console.log($axiosName, error.message, error.config);
         return Promise.reject(error);
       }
     );
 
     API.interceptors.response.use(
       (response) => {
-        console.log(axiosName, response.config, response.data);
+        console.log($axiosName, response.config, response.data);
         return response;
       },
       (error) => {
-        // console.log(axiosName, error);
+        // console.log($axiosName, error);
         if (error.config) {
           //
         } else if (error.config && error.response) {
@@ -127,7 +127,7 @@ export default function MyAxios() {
       });
 
     return () => {
-      console.log(pageName, "component un-mount");
+      console.log($name, "component un-mount");
     };
   }, []);
 

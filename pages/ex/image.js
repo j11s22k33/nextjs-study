@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import imageStyle from "@/styles/ex/image.module.scss";
 import Image from "next/image";
 
-const pageName = "[MyImage]";
+const $name = "[MyImage]";
 
 export default function MyImage({ updateUI }) {
   useEffect(() => {
-    console.log(pageName, "component mount");
+    console.log($name, "component mount");
 
     return () => {
-      console.log(pageName, "component un-mount");
+      console.log($name, "component un-mount");
     };
   }, []);
 

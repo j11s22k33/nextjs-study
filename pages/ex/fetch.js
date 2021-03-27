@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-const pageName = "[MyFetch]";
+const $name = "[MyFetch]";
 
 export default function MyFetch({ updateUI }) {
   useEffect(() => {
-    console.log(pageName, "component mount");
+    console.log($name, "component mount");
 
     // https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch
     fetch("/api/hello")
@@ -25,7 +25,7 @@ export default function MyFetch({ updateUI }) {
         myImage.src = objectURL;
       });
     return () => {
-      console.log(pageName, "component un-mount");
+      console.log($name, "component un-mount");
     };
   }, []);
 

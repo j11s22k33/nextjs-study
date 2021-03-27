@@ -3,10 +3,11 @@ import useSWR, { mutate } from "swr";
 import axios from "axios";
 import Link from "next/link";
 
-const pageName = "[MyUseSWR]";
+const $name = "[MyUseSWR]";
 const SWR_KEY = "/api/hello";
 
 // https://swr.vercel.app/
+// 웹 페이지 최소모드 최대모드 하거나 포커스 다시 얻거나 등등 필요에 따라서 데이터 최신으로 유지한다
 function useSWR_hello() {
   // 서버에서 받은 데이터 가공하기
   const addData = (data) => {
@@ -76,10 +77,10 @@ function Hello({ age }) {
 
 export default function MyUseSWR({ updateUI }) {
   useEffect(() => {
-    console.log(pageName, "component mount");
+    console.log($name, "component mount");
 
     return () => {
-      console.log(pageName, "component un-mount");
+      console.log($name, "component un-mount");
     };
   }, []);
 

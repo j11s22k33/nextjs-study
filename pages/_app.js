@@ -1,10 +1,11 @@
 import "@/styles/index.scss";
 import { useStateCallbackWrapper } from "@/utils/common";
 import env from "@/config/env";
+import { ContextProvider } from "@/config/context";
 
-const pageName = "[MyApp]";
+const $name = "[MyApp]";
 
-console.log(pageName, env);
+console.log($name, env);
 
 function MyApp({ Component, pageProps }) {
   const [, uTmp] = useStateCallbackWrapper(0);
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Component {...pageProps} updateUI={updateUI} />
+      <ContextProvider>
+        <Component {...pageProps} updateUI={updateUI} />
+      </ContextProvider>
     </>
   );
 }
