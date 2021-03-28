@@ -1,60 +1,61 @@
 import React, { useEffect, useReducer } from "react";
-const $name = "[useReducer]";
+
+const $name = "[MyIndex]";
 
 // https://ko.reactjs.org/docs/hooks-reference.html#usecontext
-// useState 비슷.
-const ExampleReducer = {
-  initialState: {
+const createExReducer = function () {
+  const type = {
+    ADD: "UPDATE"
+  };
+  const initialState = {
     count: 0
-  },
-  reducer(state, action) {
-    switch (action.type) {
-      case "ADD":
-        return { ...state, count: state.count + 1 };
-      // return state; // useRef.current 와 비슷하게 동작.
-      // return { ...state };  // useState 와 비슷하게 동작. context 값이 변경되면 하위 component도 변경 되어야 하니. 새로운 state 를 반환하는 코드가 맞다
-      default:
-        throw new Error();
+  };
+  const action = {
+    update(data) {
+      return {
+        type: type.ADD,
+        data
+      };
     }
-  }
+  };
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case type.ADD:
+        return { ...state, ...action.data };
+      default:
+        return state;
+    }
+  };
+  return { type, initialState, action, reducer };
 };
 
-export default function MyReducer({ updateUI }) {
+const ExReducer = createExReducer();
+
+export default function MyIndex({ updateUI }) {
   const [state, dispatch] = useReducer(
-    ExampleReducer.reducer,
-    ExampleReducer.initialState
+    ExReducer.reducer,
+    ExReducer.initialState
   );
 
   useEffect(() => {
     console.log($name, "component mount");
 
+    dispatch(ExReducer.action.update({ name: "홍길동" }));
+    console.log($name, state);
+
     setTimeout(() => {
-      dispatch({ type: "ADD" });
-      console.log($name, "dependency []", state);
+      dispatch(ExReducer.action.update({ name: "홍길동 2" }));
+      console.log($name, state);
     }, 3000);
-
-    setTimeout(() => {
-      dispatch({ type: "ADD" });
-      console.log($name, "dependency []", state);
-    }, 6000);
-
-    setTimeout(() => {
-      dispatch({ type: "ADD" });
-      console.log($name, "dependency []", state);
-    }, 9000);
 
     return () => {
       console.log($name, "component un-mount");
     };
   }, []);
 
-  useEffect(() => {
-    console.log($name, "dependency [state]", state);
-  }, [state]);
-
   return (
     <>
-      <h1>{state.count}</h1>
+      <h1>{JSON.stringify(state)}</h1>
       <style jsx>{``}</style>
     </>
   );
