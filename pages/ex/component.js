@@ -6,7 +6,7 @@ const $name = "[MyIndex]";
 const CustomH1 = ({ children }) => {
   return <h1>{children}</h1>;
 };
-
+///////////////////////////////////////////////////////////////
 const CustomInput = forwardRef(({ children }, ref) => {
   return (
     <>
