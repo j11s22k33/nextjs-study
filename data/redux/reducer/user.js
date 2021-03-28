@@ -1,26 +1,22 @@
-const $name = "[Reducer/user]";
+const initialState = {};
 
-const initialState = {
-  user: {}
-};
+const TYPE_UPDATE = "UPDATE";
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "UPDATE":
+    case TYPE_UPDATE:
       return {
         ...state,
         ...action.data
       };
     default:
-      throw new Error(
-        `${$name} Not found reducer.Action ${JSON.stringify(action)}`
-      );
+      return state;
   }
 };
 
 const Action = {
   update: (data) => ({
-    type: "UPDATE",
+    type: TYPE_UPDATE,
     data
   })
 };
