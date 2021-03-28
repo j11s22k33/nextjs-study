@@ -25,7 +25,7 @@ export default function MyUseContext({ updateUI }) {
 
   return (
     <>
-      <h1>{JSON.stringify(gstate)}</h1>
+      <h1>{JSON.stringify(state)}</h1>
       <style jsx>{``}</style>
     </>
   );
