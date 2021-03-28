@@ -1,8 +1,8 @@
 import "@/styles/index.scss";
 import { useStateCallbackWrapper } from "@/utils/common";
 import env from "@/config/env";
-import { ContextProvider } from "@/config/context";
-import { ReduxProvider } from "@/config/contextRedux";
+import { Provider as ContextProvider } from "@/data/context";
+import ReduxProvider from "@/data/redux/provider";
 
 const $name = "[MyApp]";
 

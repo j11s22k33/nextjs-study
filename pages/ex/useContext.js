@@ -1,48 +1,31 @@
 import React, { useEffect, useContext } from "react";
-import { Context } from "@/config/context";
+import { Context, Action } from "@/data/context";
 
 const $name = "[MyUseContext]";
 
 // https://ko.reactjs.org/docs/hooks-reference.html#usecontext
-// useState 비슷.
 export default function MyUseContext({ updateUI }) {
-  const [gstate, dispatch] = useContext(Context);
-
-  console.log($name, gstate);
+  const [state, dispatch] = useContext(Context);
 
   useEffect(() => {
     console.log($name, "component mount");
 
+    dispatch(Action.update({ id: "CTX_ID", age: 30 }));
+    console.log($name, state);
+
     setTimeout(() => {
-      dispatch({ type: "INCREASE" });
-      console.log($name, "dependency []", gstate);
+      dispatch(Action.update({ id: "CTX_ID_1", age: 90 }));
+      console.log($name, state);
     }, 3000);
-
-    setTimeout(() => {
-      dispatch({ type: "INCREASE" });
-      console.log($name, "dependency []", gstate);
-    }, 6000);
-
-    setTimeout(() => {
-      dispatch({ type: "INCREASE" });
-      console.log($name, "dependency []", gstate);
-    }, 9000);
 
     return () => {
       console.log($name, "component un-mount");
     };
   }, []);
 
-  useEffect(
-    (state) => {
-      console.log($name, "dependency [ctx]", gstate, state);
-    },
-    [gstate]
-  );
-
   return (
     <>
-      <h1>{gstate.count}</h1>
+      <h1>{JSON.stringify(gstate)}</h1>
       <style jsx>{``}</style>
     </>
   );

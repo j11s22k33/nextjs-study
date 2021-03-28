@@ -1,6 +1,9 @@
-const initialState = {};
+const $name = "USER";
 
-const TYPE_UPDATE = "UPDATE";
+// dispatch 때문에 고유이름이여야 한다
+const TYPE_UPDATE = $name + "UPDATE";
+
+const initialState = {};
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
