@@ -2,6 +2,7 @@ import "@/styles/index.scss";
 import { useStateCallbackWrapper } from "@/utils/common";
 import env from "@/config/env";
 import { ContextProvider } from "@/config/context";
+import { ReduxProvider } from "@/config/contextRedux";
 
 const $name = "[MyApp]";
 
@@ -25,7 +26,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <ContextProvider>
-        <Component {...pageProps} updateUI={updateUI} />
+        <ReduxProvider>
+          <Component {...pageProps} updateUI={updateUI} />
+        </ReduxProvider>
       </ContextProvider>
     </>
   );
