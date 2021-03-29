@@ -1,14 +1,10 @@
 import "@/styles/index.scss";
 import { useStateCallbackWrapper } from "@/utils/common";
-import env from "@/config/env";
 import { Provider as ContextProvider } from "@/data/context";
 import ReduxProvider from "@/data/redux/provider";
-import CssApi from "@/3rd/ex/cssApi";
+import env from "@/config/env";
 
-const ES6Class = new CssApi();
-
-const $name = "[MyApp]";
-
+const $name = "[_app]";
 console.log($name, env);
 
 function MyApp({ Component, pageProps }) {

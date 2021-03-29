@@ -1,8 +1,3 @@
-/**
- * 휘발성이기 때문에 새로고침 하면 데이터 다 날아간다.
- * sessionStorage 비슷.
- * localStorage 처럼 이용하려먼 redux-presist
- */
 import React, { useReducer } from "react";
 
 const $name = "[Context]";
