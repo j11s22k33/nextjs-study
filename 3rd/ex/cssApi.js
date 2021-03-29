@@ -5,13 +5,12 @@ const $name = "[CssAPI]";
 
 export default class CssAPI {
   constructor() {
-    // this.x2js = new X2JS();
-
-    const state = store.getState();
-    console.log($name, state);
+    this.state = store.getState();
+    console.log($name, "constructor", this.state.post);
   }
 
-  receiveMessage(msg) {
-    store.dispatch(postAction.update({ msg }));
+  setMessage(msg) {
+    store.dispatch(postAction.update({ msg: msg }));
+    console.log($name, "setMessage", this.state.post);
   }
 }
