@@ -18,9 +18,9 @@ export default function MyImage({ updateUI }) {
       <Image
         src={`${process.env.NEXT_PUBLIC_BASE_PATH}/images/bbb.jpg`}
         alt=""
-        width={100}
-        height={100}
-        quality={10} // 퀄리티 조정으로 용량 최적화
+        width={700}
+        height={700}
+        quality={100} // 퀄리티 조정으로 용량 최적화
       />
       <div className="bg-img"></div>
       <div className={imageStyle["bg-img2"]}></div>
