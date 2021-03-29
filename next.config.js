@@ -106,11 +106,10 @@ module.exports = (phase, { defaultConfig }) => {
     ) {
       // 라우트경로 : {페이지경로, 페이지파라미터}  -> html 생성
       return {
-        "/": { page: "/" }
-        // '/home': { page: '/home', query: {} },
-        // '/contents': { page: '/contents', query: {} },
-        // '/notices': { page: '/notices', query: {} },
-        // '/clubs': { page: '/clubs', query: {} },
+        "/": { page: "/" },
+        '/css': { page: '/ex/css', query: {} },
+        '/home': { page: '/ex/home', query: {} },
+        '/image': { page: '/ex/image', query: {} },
       };
     }
   };
