@@ -69,7 +69,7 @@ module.exports = (phase, { defaultConfig }) => {
     //     ]
     // },
     images: {
-      loader: "imgix",
+      loader: "imgix"
       // path: "/",
     },
     distDir: distDir, // [next dev =a> /.next] [next build, export, server => /build]
@@ -100,6 +100,7 @@ module.exports = (phase, { defaultConfig }) => {
     typescript: {
       ignoreBuildErrors: true // ts 빌드 에러 무시
     },
+    exportTrailingSlash: true,
     exportPathMap: async function (
       defaultPathMap,
       { dev, dir, outDir, distDir, buildId }
@@ -107,9 +108,9 @@ module.exports = (phase, { defaultConfig }) => {
       // 라우트경로 : {페이지경로, 페이지파라미터}  -> html 생성
       return {
         "/": { page: "/" },
-        '/css': { page: '/ex/css', query: {} },
-        '/home': { page: '/ex/home', query: {} },
-        '/image': { page: '/ex/image', query: {} },
+        "/css": { page: "/ex/css", query: {} },
+        "/home": { page: "/ex/home", query: {} },
+        "/image": { page: "/ex/image", query: {} }
       };
     }
   };
