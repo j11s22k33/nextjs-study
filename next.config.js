@@ -74,9 +74,9 @@ module.exports = (phase, { defaultConfig }) => {
     //   // path: "https://example.com/myaccount/"
     // },
     distDir: distDir, // [next dev =a> /.next] [next build, export, server => /build]
-    // generateBuildId: async () => {
-    //   return "my-build-id";
-    // },
+    generateBuildId: async () => {
+      return "my-build-id";
+    },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
       // Note: we provide webpack above so you should not `require` it
       // Perform customizations to webpack config
