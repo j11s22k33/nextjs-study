@@ -109,6 +109,7 @@ module.exports = (phase, { defaultConfig }) => {
     /**
     맵핑한것만 html로 외부에 노출된다. location.reload()
     index.html만 필요한 경우 같이 특수한 상황이 아니면 사용할 필요없다.
+    dynamic route는 안된다. /out/ex/[id]/home/index.html
     */
     // exportPathMap: async function (
     //   defaultPathMap,

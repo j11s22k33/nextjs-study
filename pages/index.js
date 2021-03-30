@@ -6,6 +6,7 @@ const $name = "[MyIndex]";
 
 export default function MyIndex({ updateUI }) {
   const path = useRef([
+    "/ex/1234/dynamicRoute",
     "/ex/popup",
     "/ex/css",
     "/ex/image",
