@@ -100,20 +100,29 @@ module.exports = (phase, { defaultConfig }) => {
     typescript: {
       ignoreBuildErrors: true // ts 빌드 에러 무시
     },
-    exportTrailingSlash: true, // http://localhost/home.html -> http://localhost/home/index.html // true로 설정하면 http://localhost/home.html 대신 http://localhost/home 으로 요청해도 된다
-    exportPathMap: async function (
-      defaultPathMap,
-      { dev, dir, outDir, distDir, buildId }
-    ) {
-      // 라우트경로: {페이지경로, 페이지파라미터}  -> html 생성
-      // http://localhost/css -> /src/page/ex/css
-      return {
-        "/": { page: "/" },
-        "/ex/css": { page: "/ex/css", query: {} },
-        "/ex/home": { page: "/ex/home", query: {} },
-        "/ex/image": { page: "/ex/image", query: {} }
-      };
-    }
+    /**
+    필수옵션
+    /out/ex/home.html -> /out/ex/home/index.html
+    http://localhost/home.html -> http://localhost/home/ 으로 요청가능해진다.
+    */
+    exportTrailingSlash: true,
+    /**
+    맵핑한것만 html로 외부에 노출된다. location.reload()
+    index.html만 필요한 경우 같이 특수한 상황이 아니면 사용할 필요없다.
+    */
+    // exportPathMap: async function (
+    //   defaultPathMap,
+    //   { dev, dir, outDir, distDir, buildId }
+    // ) {
+    //   // 라우트경로: {페이지경로, 페이지파라미터}  -> html 생성
+    //   // http://localhost/css -> /src/page/ex/css
+    //   return {
+    //     "/": { page: "/" },
+    //     "/ex/css": { page: "/ex/css", query: {} },
+    //     "/ex/home": { page: "/ex/home", query: {} },
+    //     "/ex/image": { page: "/ex/image", query: {} }
+    //   };
+    // }
   };
 
   const withBundleAnalyzer = require("@next/bundle-analyzer")({
