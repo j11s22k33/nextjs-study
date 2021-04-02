@@ -84,7 +84,6 @@ module.exports = (phase, { defaultConfig }) => {
       // Important: return the modified config
       return config;
     },
-    // trailingSlash: true, // 경로 끝에 "/"
     // reactStrictMode: true,
     // generateEtags: false, // html etag 캐시관련
     // poweredByHeader: false,
@@ -101,11 +100,12 @@ module.exports = (phase, { defaultConfig }) => {
       ignoreBuildErrors: true // ts 빌드 에러 무시
     },
     /**
-    필수옵션
-    /out/ex/home.html -> /out/ex/home/index.html
-    http://localhost/home.html -> http://localhost/home/ 으로 요청가능해진다.
-    */
-    exportTrailingSlash: true,
+     필수옵션
+     /out/ex/home.html -> /out/ex/home/index.html
+     http://localhost/home.html -> http://localhost/home/ 으로 요청가능해진다.
+     */
+    trailingSlash: true, // 필수 /out/ex/home.html -> /out/ex/home/index.html
+    // exportTrailingSlash: true, // The "exportTrailingSlash" option has been renamed to "trailingSlash". Please update your next.config.js.
     /**
     맵핑한것만 html로 외부에 노출된다. location.reload()
     index.html만 필요한 경우 같이 특수한 상황이 아니면 사용할 필요없다.
