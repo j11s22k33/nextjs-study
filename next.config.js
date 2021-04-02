@@ -89,7 +89,7 @@ module.exports = (phase, { defaultConfig }) => {
     // poweredByHeader: false,
     // compress: true, // 리소스 gzip
     basePath: basePath,
-    // assetPrefix: basePath, //CDN
+    assetPrefix: "./", // 빌드된 css, js 등 어셋 경로
     // pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
     // productionBrowserSourceMaps: false, // 소스맵
     sassOptions: {
@@ -104,7 +104,7 @@ module.exports = (phase, { defaultConfig }) => {
      /out/ex/home.html -> /out/ex/home/index.html
      http://localhost/home.html -> http://localhost/home/ 으로 요청가능해진다.
      */
-    trailingSlash: true, // 필수 /out/ex/home.html -> /out/ex/home/index.html
+    trailingSlash: true // 필수 /out/ex/home.html -> /out/ex/home/index.html
     // exportTrailingSlash: true, // The "exportTrailingSlash" option has been renamed to "trailingSlash". Please update your next.config.js.
     /**
     맵핑한것만 html로 외부에 노출된다. location.reload()
