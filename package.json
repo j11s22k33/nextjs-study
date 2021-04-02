@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "rmdir /q/s .next; next dev --port 3000",
     "build": "rmdir /q/s build; next build",
-    "export": "rmdir /q/s build; next build && next export",
+    "export": "rmdir /q/s build out; next build && next export",
     "start": "rmdir /q/s build; next build && next start --port 4000",
     "analyze": "rmdir /q/s build; cross-env ANALYZE=true next build",
     "post-update": "yarn upgrade --latest"
