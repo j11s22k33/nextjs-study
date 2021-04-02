@@ -89,7 +89,7 @@ module.exports = (phase, { defaultConfig }) => {
     // poweredByHeader: false,
     // compress: true, // 리소스 gzip
     basePath: basePath,
-    assetPrefix: "./", // 빌드된 css, js 등 어셋 경로
+    // assetPrefix: basePath, // CDN 같은
     // pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
     // productionBrowserSourceMaps: false, // 소스맵
     sassOptions: {
