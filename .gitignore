@@ -36,3 +36,4 @@ yarn-error.log*
 *.lock
 next-env.d.ts
 tsconfig.json
+.vscode/
