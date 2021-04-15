@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -29,7 +29,11 @@ export default function MyIndex({ updateUI }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {
-        path.current.map((item, idx)=>(<><Link href={item}>{item}</Link><br /></>))
+        path.current.map((item, idx) => (
+          <Fragment key={idx}>
+            <Link href={item}>{item}</Link><br />
+          </Fragment>
+        ))
       }
       <h1 className="red">Index</h1>
       <style jsx>{`
